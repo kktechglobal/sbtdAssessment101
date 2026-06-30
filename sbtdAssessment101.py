@@ -41,7 +41,7 @@ PIN = "1234"
 MAX_ATTEMPTS = 3
 
 
-blance = 0.00
+balance = 0.00
 attempts = 0
 logged_in = False
 transaction_history = []
@@ -51,69 +51,132 @@ transaction_count = 0
 
 while attempts < MAX_ATTEMPTS:
     pin = input("Welcome to the ATM! Please enter your PIN (4 digits): ")
+    if pin == PIN:
+        logged_in = True
+        print("PIN accepted. You can now perform transactions.")
+        while True:
+            print("ATM Menu:")
+            print("1. Balance")
+            print("2. Deposit")
+            print("3. Withdrawal")
+            print("4. Quit")
+            choice = input("Enter your choice (1-4): ")
+            if choice == "1":
+                print (f"your current balance is: {balance}")
 
-if pin == PIN:
-    logged_in = True
-    print("PIN accepted. You can now perform transactions.")
-    break
-else: 
-    "attempts += 1"
-    remaining_attempts = MAX_ATTEMPTS - attempts
+            # deposit
+            elif choice == "2": 
+                amount = float (input("enter deposit amount:$"))
+                if amount >= 0: 
+                    balance = balance + amount
+                    print (f" deposit succcefull.")
+                else:
+                    print ("amount must be more then 0.")
 
-else:
-    remaining_attempts > 0:
-    print(f"Incorrect PIN. Please try again. You have {remaining_attempts} attempt(s) remaining.")
-else:
-    print("Maximum attempts reached. Try again later in 24 hours.")
+            # Withdraw
+            elif choice == "3":
+                amount = float(input("Enter withdrawal amount: ₦"))
+                if amount > 0 and amount <= balance:
+                    balance -= amount
+                    transaction_count += 1
+                    print(f"Withdrawal successful.")
+                    print(f"Remaining balance: ₦{balance:.2f}")
+                else:
+                    print("Invalid withdrawal amount or insufficient funds.")
 
-
-# part B  transaction menu
-
-print("Welcome to the ATM! Please select an option:")
-
-while true:
-    print("ATM Menu:")
-    print("1. Deposit")
-    print("2. Withdrawal")
-    print("3. Balance")
-    print("4. Transaction History")
-    print("5. Quit")
-    choice = input("Enter your choice (1-5): ")
-
-#     # CHECK BALANCE
-if choice == "1":
-    print (f"your current balance is: $ {balance:.2f}")
-
-
-#     # deposit
-elif choice == "2": amount = float (input("enter deposit amount:$"))
-
-if amount > 0: "balance += amount transaction_count +=1"
-    print (f" deposit succcefull.")
-    print ("amount must be more then 0.")
+            # Quit
+            elif choice == "4":
+                print(f"\nTotal transactions: {transaction_count}")
+                print("Thank you for using our ATM. Goodbye!")
+                exit()
+    else:
+        attempts = attempts + 1
+        print("Incorrect PIN. Please try again.")
+        if attempts == MAX_ATTEMPTS:
+            print("Maximum attempts reached. Exiting the program.......")
+            exit()
 
 
-# Withdraw
-if 
-    choice == "3":amount = float(input("Enter withdrawal amount: ₦"))
-elif 
-    amount > 0 and amount <= balance:balance -= amount
-    transaction_count += 1
-    print(f"Withdrawal successful.")
-    print(f"Remaining balance: ₦{balance:.2f}")
-elif amount <= 0:
-    print("Amount must be more than 0.")
-elif: print("Insufficient funds.")
 
-    # Quit
-elif choice == "4":
-    print(f"\nTotal transactions: {transaction_count}")
-    print("Thank you for using our ATM. Goodbye!")
-    break
 
-    # Invalid Menu Choice
-else:
-    print("Invalid option. Please choose a number between 1 and 4.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # else: 
+    #     attempts += 1
+    #     if attempts == 3:
+    #         print("Maximum attempts reached. Exiting the program.")
+        
+    # while True:
+    #     print("ATM Menu:")
+    #     print("1. Deposit")
+    #     print("2. Withdrawal")
+    #     print("3. Balance")
+    #     print("4. Transaction History")
+    #     print("5. Quit")
+    #     choice = input("Enter your choice (1-5): ")
+
+# #     # CHECK BALANCE
+# if choice == "1":
+#     print (f"your current balance is: $ {balance:.2f}")
+
+
+# #     # deposit
+# elif choice == "2": amount = float (input("enter deposit amount:$"))
+
+# if amount > 0: "balance += amount transaction_count +=1"
+#     print (f" deposit succcefull.")
+#     print ("amount must be more then 0.")
+
+
+# # Withdraw
+# if 
+#     choice == "3":amount = float(input("Enter withdrawal amount: ₦"))
+# elif 
+#     amount > 0 and amount <= balance:balance -= amount
+#     transaction_count += 1
+#     print(f"Withdrawal successful.")
+#     print(f"Remaining balance: ₦{balance:.2f}")
+# elif amount <= 0:
+#     print("Amount must be more than 0.")
+# elif: print("Insufficient funds.")
+
+#     # Quit
+# elif choice == "4":
+#     print(f"\nTotal transactions: {transaction_count}")
+#     print("Thank you for using our ATM. Goodbye!")
+#     break
+
+#     # Invalid Menu Choice
+# else:
+#     print("Invalid option. Please choose a number between 1 and 4.")
 
 
 
